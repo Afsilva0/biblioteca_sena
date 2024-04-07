@@ -120,7 +120,8 @@ public class ControladorProducto implements ActionListener {
     public void consultarProductos() {
         List<Producto> productos = this.controlProducto.all();
         DefaultTableModel model = (DefaultTableModel) vistaProducto.tablaProducto.getModel();
-
+        model.setRowCount(0);
+        
         for (Producto producto : productos) {
             model.addRow(new Object[]{producto.getId(), producto.getCodigo(), producto.getNombre(), producto.getPrecio()});
         }
@@ -135,7 +136,6 @@ public class ControladorProducto implements ActionListener {
         if (vistaProducto.txt_id.getText().isEmpty()) {
             System.err.println("fallo");
             JOptionPane.showMessageDialog(null, "Debe soleccionar un producto");
-
             return Boolean.FALSE;
         }
         try {
